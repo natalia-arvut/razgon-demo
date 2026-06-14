@@ -8,7 +8,7 @@
 <meta property="og:title" content="РАЗГОН — цифровое агентство полного цикла">
 <meta property="og:description" content="Сайты, приложения, SEO и реклама под ключ. Разгоняем бизнес в цифре.">
 <meta property="og:type" content="website">
-<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="img/favicon.png" type="image/png">
 <style>
 @import url('fonts/fonts.css');
 :root{
@@ -20,6 +20,11 @@
 html{-webkit-text-size-adjust:100%}
 body{background:var(--cream);color:var(--ink);font-family:'Manrope',system-ui,sans-serif;
   font-size:18px;line-height:1.6;font-weight:500;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(58% 46% at 0% 0%, rgba(255,158,142,.20), transparent 62%),
+    radial-gradient(56% 44% at 100% 0%, rgba(255,138,176,.18), transparent 62%),
+    radial-gradient(70% 38% at 50% 102%, rgba(255,170,150,.10), transparent 70%);}
 a{color:inherit;text-decoration:none}
 img,svg,video{display:block;max-width:100%}
 ::selection{background:var(--ink);color:var(--cream)}
@@ -51,7 +56,7 @@ h1,h2,h3,h4{font-weight:800;line-height:1.02;letter-spacing:-.035em}
 .nav.solid{background:rgba(246,244,239,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);padding:13px 0}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
 .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:23px;letter-spacing:-.04em}
-.brand svg{width:40px;height:32px;color:var(--ink)}
+.brand img{height:30px;width:auto;display:block}
 .menu{display:flex;align-items:center;gap:34px;font-size:16px;font-weight:600}
 .menu>li{position:relative;list-style:none}
 .menu a{color:var(--ink);opacity:.7;transition:opacity .2s;display:inline-flex;align-items:center;gap:6px}
@@ -69,22 +74,29 @@ h1,h2,h3,h4{font-weight:800;line-height:1.02;letter-spacing:-.035em}
 @media(max-width:1000px){.menu,.nav-cta .btn{display:none}.burger{display:flex}}
 
 /* hero */
-.hero{min-height:100svh;display:flex;align-items:center;padding:120px 0 48px;position:relative}
-.hero .wrap{width:100%}
-.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:52px;align-items:center}
-.hero h1{font-size:clamp(30px,4.4vw,62px);letter-spacing:-.035em}
+.hero{min-height:100svh;position:relative;display:flex;align-items:center;padding:124px 0 56px;overflow:hidden}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.hero-text{max-width:600px}
+.hero h1{font-size:clamp(30px,4.2vw,60px);letter-spacing:-.035em}
 .rot{display:inline-block}
-#rotWord{display:inline-block;color:var(--ink);transition:opacity .35s ease,transform .35s ease;will-change:opacity,transform}
-.hero-sub{margin-top:26px;max-width:46ch;font-size:clamp(16px,1.4vw,19px);color:var(--ink);opacity:.7;font-weight:500}
-.hero-cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
-.hero-foot{display:flex;gap:30px;margin-top:42px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:24px}
+#rotWord{display:inline-block;color:var(--ink)}
+.hero-sub{margin-top:24px;max-width:40ch;font-size:clamp(16px,1.4vw,19px);color:var(--ink);opacity:.72;font-weight:500}
+.hero-cta{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+.hero-foot{display:flex;gap:28px;margin-top:40px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:22px;max-width:560px}
 .hero-foot div{display:flex;flex-direction:column}
-.hero-foot b{font-size:27px;font-weight:800;letter-spacing:-.03em}
+.hero-foot b{font-size:26px;font-weight:800;letter-spacing:-.03em}
 .hero-foot span{font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
-.hero-media{position:relative;aspect-ratio:16/11;border-radius:22px;overflow:hidden;border:1px solid var(--line);
-  background:#0b0b0f;box-shadow:0 40px 90px -52px rgba(0,0,0,.45)}
-.hero-media video{width:100%;height:100%;object-fit:cover}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:28px}.hero-media{aspect-ratio:16/10;order:-1}}
+.hero-media{position:absolute;top:0;right:0;width:46vw;height:100%;z-index:1;overflow:hidden}
+.hero-media video{width:100%;height:100%;object-fit:cover;object-position:40% 50%}
+.hero-media::before{content:'';position:absolute;inset:0;z-index:1;background:rgba(11,11,15,.24)}
+.hero-media::after{content:'';position:absolute;inset:0;z-index:2;
+  background:linear-gradient(90deg,var(--cream) 0%,rgba(246,244,239,0) 26%,rgba(11,11,15,.18) 64%,rgba(11,11,15,.42) 100%)}
+@media(max-width:900px){
+  .hero{min-height:auto;padding:120px 0 44px;flex-direction:column;align-items:stretch}
+  .hero-media{position:relative;width:100%;height:280px;border-radius:18px;margin-top:28px;order:2}
+  .hero-media::after{background:linear-gradient(180deg,rgba(11,11,15,.08),rgba(11,11,15,.32))}
+  .hero-text{max-width:none}
+}
 
 /* marquee */
 .mq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:22px 0;background:var(--paper)}
@@ -221,7 +233,7 @@ footer{padding:80px 0 40px}
 
 /* loader */
 .ldr{position:fixed;inset:0;z-index:10000;background:var(--cream);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:22px}
-.ldr svg{width:120px;height:96px;color:var(--ink)}
+.ldr img{width:120px;height:auto}
 .ldr .lw{font-weight:800;font-size:clamp(34px,8vw,84px);letter-spacing:-.05em;overflow:hidden}
 .ldr .lb{width:min(280px,56vw);height:2px;background:var(--line);overflow:hidden}
 .ldr .lb i{display:block;height:100%;width:0;background:var(--ink)}
@@ -248,7 +260,7 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
 
 <!-- LOADER -->
 <div class="ldr" id="ldr">
-  <svg viewBox="0 0 200 160"><use href="#rzMark"/></svg>
+  <img src="img/logo.png" alt="">
   <div class="lw"><span id="lwt">РАЗГОН</span></div>
   <div class="lb"><i id="lbi"></i></div>
 </div>
@@ -260,7 +272,7 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
 <nav class="nav" id="nav">
   <div class="wrap">
     <a href="#top" class="brand" data-cursor>
-      <svg viewBox="0 0 200 160"><use href="#rzMark"/></svg>
+      <img src="img/logo.png" alt="РАЗГОН">
       РАЗГОН
     </a>
     <ul class="menu">
@@ -279,7 +291,7 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
       <li><a href="#contact" data-cursor>Контакты</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="#contact" class="btn" data-cursor>Написать мне лично <span class="ar">→</span></a>
+      <a href="#contact" class="btn ghost" data-cursor>Написать мне лично <span class="ar">→</span></a>
       <div class="burger" data-cursor><span></span><span></span><span></span></div>
     </div>
   </div>
@@ -287,7 +299,7 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
 
 <!-- HERO -->
 <header class="hero" id="top">
-  <div class="wrap hero-grid">
+  <div class="wrap">
     <div class="hero-text">
       <span class="eyebrow reveal">Цифровое агентство полного цикла</span>
       <h1 class="reveal" style="margin-top:22px">Не просто сайты.<br>Сайты, которые<br><span class="rot"><span id="rotWord">работают</span></span></h1>
@@ -303,9 +315,9 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
         <div><b>1</b><span>команда вместо пяти</span></div>
       </div>
     </div>
-    <div class="hero-media reveal" data-cursor>
-      <video src="vid/webdev.mp4" autoplay muted loop playsinline preload="auto"></video>
-    </div>
+  </div>
+  <div class="hero-media" data-cursor>
+    <video src="vid/hero-cover.mp4" autoplay muted loop playsinline preload="auto"></video>
   </div>
 </header>
 
@@ -403,6 +415,10 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
 </section>
 
 <!-- ABOUT -->
+<div class="band"><div class="drift rev">
+  <span>Идея<i class="dot"></i></span><span><b>Прототип</b><i class="dot"></i></span><span>Дизайн<i class="dot"></i></span><span><b>Разработка</b><i class="dot"></i></span><span>Запуск<i class="dot"></i></span><span>Поддержка<i class="dot"></i></span><span>Идея<i class="dot"></i></span><span><b>Прототип</b><i class="dot"></i></span><span>Дизайн<i class="dot"></i></span><span><b>Разработка</b><i class="dot"></i></span><span>Запуск<i class="dot"></i></span><span>Поддержка<i class="dot"></i></span>
+</div></div>
+
 <section class="pad" id="about">
   <div class="wrap">
     <div class="about">
@@ -423,6 +439,10 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
 </section>
 
 <!-- REVIEWS -->
+<div class="band"><div class="drift">
+  <span>Без шаблонов<i class="dot"></i></span><span><b>На фреймворках</b><i class="dot"></i></span><span>С анимацией<i class="dot"></i></span><span><b>Под ключ</b><i class="dot"></i></span><span>В срок<i class="dot"></i></span><span>Без шаблонов<i class="dot"></i></span><span><b>На фреймворках</b><i class="dot"></i></span><span>С анимацией<i class="dot"></i></span><span><b>Под ключ</b><i class="dot"></i></span><span>В срок<i class="dot"></i></span>
+</div></div>
+
 <section class="pad" id="reviews">
   <div class="wrap">
     <div class="head reveal">
@@ -451,7 +471,7 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
 
 <!-- FAQ -->
 <div class="band"><div class="drift rev">
-  <span>Разгоняем бизнес<i class="dot"></i></span><span><b>в цифре</b><i class="dot"></i></span><span>Под ключ<i class="dot"></i></span><span>Разгоняем бизнес<i class="dot"></i></span><span><b>в цифре</b><i class="dot"></i></span><span>Под ключ<i class="dot"></i></span>
+  <span>Next.js<i class="dot"></i></span><span><b>React</b><i class="dot"></i></span><span>GSAP<i class="dot"></i></span><span>Headless CMS<i class="dot"></i></span><span><b>Аналитика</b><i class="dot"></i></span><span>Next.js<i class="dot"></i></span><span><b>React</b><i class="dot"></i></span><span>GSAP<i class="dot"></i></span><span>Headless CMS<i class="dot"></i></span><span><b>Аналитика</b><i class="dot"></i></span>
 </div></div>
 
 <section class="pad" id="faq">
@@ -475,6 +495,10 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
 </section>
 
 <!-- CTA -->
+<div class="band"><div class="drift">
+  <span>Обсудим проект<i class="dot"></i></span><span><b>Бесплатная оценка</b><i class="dot"></i></span><span>Отвечаю лично<i class="dot"></i></span><span><b>Старт сразу</b><i class="dot"></i></span><span>Обсудим проект<i class="dot"></i></span><span><b>Бесплатная оценка</b><i class="dot"></i></span><span>Отвечаю лично<i class="dot"></i></span><span><b>Старт сразу</b><i class="dot"></i></span>
+</div></div>
+
 <section class="pad" id="contact">
   <div class="wrap">
     <div class="cta reveal">
@@ -504,7 +528,7 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
     <div class="f-top">
       <div class="f-col">
         <a href="#top" class="brand" style="font-size:24px" data-cursor>
-          <svg viewBox="0 0 200 160" style="width:36px;height:29px"><use href="#rzMark"/></svg>
+          <img src="img/logo.png" alt="РАЗГОН" style="height:28px;width:auto">
           РАЗГОН</a>
         <p class="f-about">Цифровое агентство полного цикла. Разгоняем бизнес в цифре.</p>
       </div>
@@ -596,14 +620,10 @@ addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>30),{passive:
 /* ---------- main (effects only — never gates content) ---------- */
 function start(){
   if(window.__rzStarted)return; window.__rzStarted=true;
-  // rotate hero word — плавная смена, всегда одно слово на 3-й строке, без дёрганья
-  const words=['работают','продают','растут','окупаются'];
+  // rotate hero word — проявление по буквам (scramble), всегда на 3-й строке
+  const words=['работают','продают','двигают бизнес','окупаются'];
   const rw=document.getElementById('rotWord'); let wi=0;
-  if(!reduce && rw) setInterval(()=>{
-    wi=(wi+1)%words.length;
-    rw.style.opacity='0'; rw.style.transform='translateY(10px)';
-    setTimeout(()=>{rw.textContent=words[wi]; rw.style.opacity='1'; rw.style.transform='translateY(0)';},340);
-  },2900);
+  if(!reduce && rw) setInterval(()=>{wi=(wi+1)%words.length; scramble(rw,words[wi],760);},3000);
 
   if(!reduce && window.gsap){
     // marquee drift
@@ -621,7 +641,7 @@ function start(){
   // count up (IntersectionObserver)
   document.querySelectorAll('[data-count]').forEach(el=>{
     const end=+el.dataset.count,suf=el.dataset.suf||'';
-    const run=()=>{const t0=performance.now();(function st(n){const p=Math.min((n-t0)/1300,1);
+    const run=()=>{const t0=performance.now();(function st(n){const p=Math.max(0,Math.min((n-t0)/1300,1));
       el.textContent=Math.floor((1-Math.pow(1-p,3))*end)+suf;if(p<1)requestAnimationFrame(st);else el.textContent=end+suf;})(t0);};
     if(reduce||!('IntersectionObserver'in window)){el.textContent=end+suf;return;}
     const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){run();io.disconnect();}}),{threshold:.6});
