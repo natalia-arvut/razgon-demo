@@ -81,15 +81,10 @@ h1,h2,h3,h4{font-weight:800;line-height:1.02;letter-spacing:-.035em}
 .hero-foot div{display:flex;flex-direction:column}
 .hero-foot b{font-size:27px;font-weight:800;letter-spacing:-.03em}
 .hero-foot span{font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px}
-.hero-media{position:relative;aspect-ratio:4/5;border-radius:26px;overflow:hidden;border:1px solid var(--line);
-  background:#0b0b0f;box-shadow:0 44px 100px -50px rgba(0,0,0,.5)}
+.hero-media{position:relative;aspect-ratio:16/11;border-radius:22px;overflow:hidden;border:1px solid var(--line);
+  background:#0b0b0f;box-shadow:0 40px 90px -52px rgba(0,0,0,.45)}
 .hero-media video{width:100%;height:100%;object-fit:cover}
-.hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,15,.05),rgba(11,11,15,.35))}
-.hero-badge{position:absolute;left:18px;bottom:18px;z-index:2;display:flex;gap:9px;align-items:center;
-  background:rgba(11,11,15,.5);backdrop-filter:blur(10px);color:#fff;font-family:'Space Grotesk',sans-serif;
-  font-size:12px;letter-spacing:.02em;padding:10px 15px;border-radius:40px;border:1px solid rgba(255,255,255,.16)}
-.hero-badge i{width:7px;height:7px;border-radius:50%;background:#3ce0a0;box-shadow:0 0 10px #3ce0a0}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:30px}.hero-media{aspect-ratio:16/10;max-height:320px;order:-1}}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:28px}.hero-media{aspect-ratio:16/10;order:-1}}
 
 /* marquee */
 .mq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:22px 0;background:var(--paper)}
@@ -97,9 +92,22 @@ h1,h2,h3,h4{font-weight:800;line-height:1.02;letter-spacing:-.035em}
 .mq-row span{font-weight:800;font-size:clamp(22px,3vw,40px);letter-spacing:-.03em;padding:0 26px;display:inline-flex;align-items:center;gap:26px}
 .mq-row .st{width:11px;height:11px;color:var(--ink)}
 
+/* decorative drifting bands — заполняют большие промежутки */
+.band{overflow:hidden;padding:34px 0;user-select:none;pointer-events:none}
+.band.lg{padding:52px 0}
+.drift{display:inline-flex;white-space:nowrap;font-weight:800;font-size:clamp(44px,9vw,128px);
+  letter-spacing:-.035em;line-height:.9;text-transform:uppercase;color:transparent;
+  -webkit-text-stroke:1px var(--muted2);will-change:transform;animation:drift 34s linear infinite}
+.drift.rev{animation-direction:reverse}
+.drift b{font-weight:800;color:var(--ink);-webkit-text-stroke:0}
+.drift span{display:inline-flex;align-items:center;gap:.5em;padding-right:.5em}
+.drift .dot{width:.16em;height:.16em;border-radius:50%;background:var(--ink);flex:none}
+@keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.drift{animation:none}}
+
 /* sections */
 section{position:relative}
-.pad{padding:120px 0}
+.pad{padding:100px 0}
 .head{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:62px;flex-wrap:wrap}
 .head h2{font-size:clamp(32px,5.2vw,72px)}
 .head p{max-width:36ch;color:var(--muted);font-weight:500}
@@ -128,26 +136,22 @@ section{position:relative}
 
 /* cases */
 .cases{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.case{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:16/10;border:1px solid var(--line);
-  background:radial-gradient(120% 120% at 50% 0%,#23242e,#0c0c12)}
+.case{position:relative;border-radius:var(--r);overflow:hidden;aspect-ratio:16/10;border:1px solid var(--line);background:#0b0b0f}
 .case:first-child{grid-column:span 2;aspect-ratio:21/9}
-.case .mock{position:absolute;left:0;right:0;top:0;bottom:0;padding:54px 56px 86px;display:flex;align-items:center;justify-content:center;
-  transition:transform .6s cubic-bezier(.2,.7,.2,1);z-index:1}
-.case:first-child .mock{padding:60px 80px 86px}
-.case .mock svg{width:100%;height:100%;filter:drop-shadow(0 26px 54px rgba(0,0,0,.5))}
-.case:hover .mock{transform:translateY(-7px) scale(1.018)}
-.case-top{position:absolute;top:24px;left:28px;right:28px;display:flex;justify-content:space-between;align-items:flex-start;z-index:3;color:var(--cream)}
-.case-num{font-family:'Space Grotesk',sans-serif;font-size:13px;letter-spacing:.1em;opacity:.75}
+.case .cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.case:hover .cover{transform:scale(1.06)}
+.case::after{content:'';position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,11,15,.18) 32%,rgba(11,11,15,.5) 62%,rgba(8,8,12,.9))}
+.case-top{position:absolute;top:22px;left:26px;right:26px;display:flex;justify-content:space-between;align-items:flex-start;z-index:3;color:var(--cream)}
+.case-num{font-family:'Space Grotesk',sans-serif;font-size:13px;letter-spacing:.1em;opacity:.85}
 .case-cat{font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
-  border:1px solid rgba(255,255,255,.28);border-radius:40px;padding:6px 13px;background:rgba(11,11,15,.3);backdrop-filter:blur(6px)}
-.case-i{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:24px 30px;color:var(--cream);
-  background:linear-gradient(180deg,transparent,rgba(8,8,12,.82))}
+  border:1px solid rgba(255,255,255,.32);border-radius:40px;padding:6px 13px;background:rgba(11,11,15,.35);backdrop-filter:blur(6px)}
+.case-i{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:24px 30px;color:var(--cream)}
 .case h3{font-size:clamp(21px,2.5vw,32px);margin-bottom:6px}
-.case-res{font-size:14px;color:rgba(255,255,255,.72);font-weight:500;display:flex;align-items:center;gap:9px}
+.case-res{font-size:14px;color:rgba(255,255,255,.78);font-weight:500;display:flex;align-items:center;gap:9px}
 .case-res .ar{transition:transform .35s}
 .case:hover .case-res .ar{transform:translateX(6px)}
 .cases-note{margin-top:22px;font-size:13px;color:var(--muted);font-family:'Space Grotesk',sans-serif}
-@media(max-width:720px){.cases{grid-template-columns:1fr}.case,.case:first-child{grid-column:span 1;aspect-ratio:16/10}.case .mock{padding:46px 40px 80px}}
+@media(max-width:720px){.cases{grid-template-columns:1fr}.case,.case:first-child{grid-column:span 1;aspect-ratio:16/10}}
 
 /* about */
 .about{display:grid;grid-template-columns:0.85fr 1.15fr;gap:46px;align-items:center}
@@ -234,12 +238,12 @@ footer{padding:80px 0 40px}
 setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove('js-anim');},3000);</script>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="rzMark" viewBox="0 0 200 160">
-  <g stroke="currentColor" stroke-width="11" stroke-linecap="round" fill="none">
-    <line x1="44" y1="56" x2="74" y2="56"/><line x1="26" y1="68" x2="74" y2="68"/><line x1="12" y1="80" x2="74" y2="80"/>
-    <line x1="30" y1="92" x2="74" y2="92"/><line x1="48" y1="104" x2="74" y2="104"/></g>
-  <circle cx="12" cy="68" r="4.6" fill="currentColor"/><circle cx="14" cy="92" r="4.6" fill="currentColor"/><circle cx="30" cy="104" r="4.6" fill="currentColor"/>
-  <circle cx="130" cy="80" r="56" stroke="currentColor" stroke-width="11" fill="none"/>
-  <circle cx="120" cy="80" r="43" fill="currentColor"/><circle cx="172" cy="80" r="5.5" fill="currentColor"/>
+  <g stroke="currentColor" stroke-width="8" stroke-linecap="round" fill="none">
+    <line x1="48" y1="58" x2="79" y2="58"/><line x1="32" y1="69" x2="79" y2="69"/><line x1="16" y1="80" x2="79" y2="80"/>
+    <line x1="34" y1="91" x2="79" y2="91"/><line x1="50" y1="102" x2="79" y2="102"/></g>
+  <circle cx="15" cy="69" r="4" fill="currentColor"/><circle cx="17" cy="91" r="4" fill="currentColor"/><circle cx="33" cy="102" r="4" fill="currentColor"/>
+  <circle cx="118" cy="80" r="48" stroke="currentColor" stroke-width="10" fill="none"/>
+  <circle cx="114" cy="80" r="33" fill="currentColor"/><circle cx="154" cy="80" r="4.5" fill="currentColor"/>
 </symbol></svg>
 
 <!-- LOADER -->
@@ -300,8 +304,7 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
       </div>
     </div>
     <div class="hero-media reveal" data-cursor>
-      <video src="vid/hero.mp4" autoplay muted loop playsinline preload="auto"></video>
-      <div class="hero-badge"><i></i>студия на связи</div>
+      <video src="vid/webdev.mp4" autoplay muted loop playsinline preload="auto"></video>
     </div>
   </div>
 </header>
@@ -358,6 +361,10 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
 </section>
 
 <!-- CASES -->
+<div class="band lg"><div class="drift">
+  <span>Скорость<i class="dot"></i></span><span><b>Рост</b><i class="dot"></i></span><span>Трафик<i class="dot"></i></span><span>Дизайн<i class="dot"></i></span><span><b>Код</b><i class="dot"></i></span><span>Результат<i class="dot"></i></span><span>Скорость<i class="dot"></i></span><span><b>Рост</b><i class="dot"></i></span><span>Трафик<i class="dot"></i></span><span>Дизайн<i class="dot"></i></span><span><b>Код</b><i class="dot"></i></span><span>Результат<i class="dot"></i></span>
+</div></div>
+
 <section class="pad" id="cases">
   <div class="wrap">
     <div class="head reveal">
@@ -365,110 +372,33 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
       <p>Каждый проект — своя задача и измеримый результат. Наведите курсор, чтобы оживить.</p>
     </div>
     <div class="cases">
-      <!-- 01 Корпоративный сайт -->
       <article class="case reveal" data-cursor>
+        <img class="cover" src="img/cover1.jpg" alt="Корпоративный сайт — мокап" loading="lazy">
         <div class="case-top"><span class="case-num">01</span><span class="case-cat">Корпоративный сайт</span></div>
-        <div class="mock"><svg viewBox="0 0 460 224" xmlns="http://www.w3.org/2000/svg">
-          <rect width="460" height="224" rx="14" fill="#f5f4ef"/>
-          <rect width="460" height="30" rx="14" fill="#e9e6dd"/><rect y="16" width="460" height="14" fill="#e9e6dd"/>
-          <circle cx="20" cy="15" r="4" fill="#cfccc3"/><circle cx="34" cy="15" r="4" fill="#cfccc3"/><circle cx="48" cy="15" r="4" fill="#cfccc3"/>
-          <rect x="72" y="9" width="190" height="13" rx="6" fill="#d8d5cd"/>
-          <circle cx="30" cy="54" r="6" fill="#16171d"/><rect x="44" y="51" width="40" height="7" rx="3" fill="#16171d"/>
-          <rect x="300" y="50" width="26" height="6" rx="3" fill="#cfccc3"/><rect x="334" y="50" width="26" height="6" rx="3" fill="#cfccc3"/><rect x="368" y="50" width="26" height="6" rx="3" fill="#cfccc3"/>
-          <rect x="406" y="46" width="40" height="16" rx="8" fill="#16171d"/>
-          <rect x="28" y="88" width="186" height="16" rx="4" fill="#16171d"/><rect x="28" y="110" width="140" height="16" rx="4" fill="#16171d"/>
-          <rect x="28" y="138" width="200" height="7" rx="3" fill="#cfccc3"/><rect x="28" y="150" width="166" height="7" rx="3" fill="#cfccc3"/>
-          <rect x="28" y="172" width="96" height="24" rx="12" fill="#25c08a"/><rect x="132" y="172" width="78" height="24" rx="12" fill="none" stroke="#16171d" stroke-width="1.5"/>
-          <rect x="252" y="84" width="180" height="112" rx="12" fill="#16171d"/>
-          <circle cx="342" cy="140" r="18" fill="#2a2b34"/><path d="M337 132l12 8-12 8z" fill="#25c08a"/>
-          <rect x="270" y="100" width="80" height="7" rx="3" fill="#3a3b44"/><rect x="270" y="113" width="120" height="7" rx="3" fill="#2f3038"/>
-        </svg></div>
         <div class="case-i"><h3>Производственная компания</h3><div class="case-res">Сайт на Next.js · дизайн с анимацией <span class="ar">→</span></div></div>
       </article>
-      <!-- 02 Интернет-магазин -->
       <article class="case reveal" data-cursor>
+        <img class="cover" src="img/cover2.jpg" alt="Интернет-магазин — мокап" loading="lazy">
         <div class="case-top"><span class="case-num">02</span><span class="case-cat">Интернет-магазин</span></div>
-        <div class="mock"><svg viewBox="0 0 360 250" xmlns="http://www.w3.org/2000/svg">
-          <rect width="360" height="250" rx="14" fill="#f5f4ef"/>
-          <rect width="360" height="28" rx="14" fill="#e9e6dd"/><rect y="14" width="360" height="14" fill="#e9e6dd"/>
-          <circle cx="18" cy="14" r="3.5" fill="#cfccc3"/><circle cx="30" cy="14" r="3.5" fill="#cfccc3"/>
-          <rect x="58" y="8" width="180" height="12" rx="6" fill="#d8d5cd"/>
-          <circle cx="336" cy="14" r="9" fill="#16171d"/><circle cx="339" cy="11" r="3" fill="#25c08a"/>
-          <g>
-            <rect x="18" y="44" width="100" height="92" rx="9" fill="#fff" stroke="#e6e3da"/><rect x="26" y="52" width="84" height="48" rx="6" fill="#dedbd2"/><rect x="26" y="108" width="46" height="8" rx="4" fill="#16171d"/><rect x="26" y="122" width="30" height="6" rx="3" fill="#cfccc3"/>
-            <rect x="130" y="44" width="100" height="92" rx="9" fill="#fff" stroke="#e6e3da"/><rect x="138" y="52" width="84" height="48" rx="6" fill="#c9e8dc"/><rect x="138" y="108" width="46" height="8" rx="4" fill="#16171d"/><rect x="138" y="122" width="30" height="6" rx="3" fill="#25c08a"/>
-            <rect x="242" y="44" width="100" height="92" rx="9" fill="#fff" stroke="#e6e3da"/><rect x="250" y="52" width="84" height="48" rx="6" fill="#dedbd2"/><rect x="250" y="108" width="46" height="8" rx="4" fill="#16171d"/><rect x="250" y="122" width="30" height="6" rx="3" fill="#cfccc3"/>
-            <rect x="18" y="146" width="100" height="92" rx="9" fill="#fff" stroke="#e6e3da"/><rect x="26" y="154" width="84" height="48" rx="6" fill="#dedbd2"/><rect x="26" y="210" width="46" height="8" rx="4" fill="#16171d"/><rect x="26" y="224" width="30" height="6" rx="3" fill="#cfccc3"/>
-            <rect x="130" y="146" width="100" height="92" rx="9" fill="#fff" stroke="#e6e3da"/><rect x="138" y="154" width="84" height="48" rx="6" fill="#dedbd2"/><rect x="138" y="210" width="46" height="8" rx="4" fill="#16171d"/><rect x="138" y="224" width="30" height="6" rx="3" fill="#cfccc3"/>
-            <rect x="242" y="146" width="100" height="92" rx="9" fill="#fff" stroke="#e6e3da"/><rect x="250" y="154" width="84" height="48" rx="6" fill="#dedbd2"/><rect x="250" y="210" width="46" height="8" rx="4" fill="#16171d"/><rect x="250" y="224" width="30" height="6" rx="3" fill="#cfccc3"/>
-          </g>
-        </svg></div>
         <div class="case-i"><h3>Онлайн-магазин</h3><div class="case-res">Разработка + SEO-продвижение <span class="ar">→</span></div></div>
       </article>
-      <!-- 03 Приложение -->
       <article class="case reveal" data-cursor>
+        <img class="cover" src="img/cover3.jpg" alt="Мобильное приложение — мокап" loading="lazy">
         <div class="case-top"><span class="case-num">03</span><span class="case-cat">Приложение</span></div>
-        <div class="mock"><svg viewBox="0 0 200 340" xmlns="http://www.w3.org/2000/svg">
-          <rect x="28" y="6" width="144" height="328" rx="30" fill="#15161c"/>
-          <rect x="36" y="16" width="128" height="308" rx="22" fill="#f5f4ef"/>
-          <rect x="84" y="22" width="32" height="7" rx="3.5" fill="#15161c"/>
-          <rect x="48" y="44" width="56" height="9" rx="4" fill="#16171d"/><circle cx="152" cy="48" r="9" fill="#cfccc3"/>
-          <rect x="48" y="66" width="104" height="58" rx="12" fill="#16171d"/>
-          <rect x="58" y="78" width="46" height="7" rx="3" fill="#6a6b74"/><rect x="58" y="92" width="70" height="14" rx="4" fill="#f5f4ef"/><rect x="58" y="112" width="30" height="6" rx="3" fill="#25c08a"/>
-          <g>
-            <circle cx="58" cy="146" r="9" fill="#e0ddd4"/><rect x="74" y="140" width="66" height="7" rx="3.5" fill="#16171d"/><rect x="74" y="151" width="44" height="6" rx="3" fill="#cfccc3"/>
-            <circle cx="58" cy="178" r="9" fill="#c9e8dc"/><rect x="74" y="172" width="76" height="7" rx="3.5" fill="#16171d"/><rect x="74" y="183" width="40" height="6" rx="3" fill="#cfccc3"/>
-            <circle cx="58" cy="210" r="9" fill="#e0ddd4"/><rect x="74" y="204" width="58" height="7" rx="3.5" fill="#16171d"/><rect x="74" y="215" width="50" height="6" rx="3" fill="#cfccc3"/>
-            <circle cx="58" cy="242" r="9" fill="#e0ddd4"/><rect x="74" y="236" width="70" height="7" rx="3.5" fill="#16171d"/><rect x="74" y="247" width="36" height="6" rx="3" fill="#cfccc3"/>
-          </g>
-          <rect x="44" y="288" width="112" height="30" rx="15" fill="#16171d"/>
-          <circle cx="66" cy="303" r="5" fill="#25c08a"/><circle cx="100" cy="303" r="5" fill="#4b4c55"/><circle cx="134" cy="303" r="5" fill="#4b4c55"/>
-        </svg></div>
         <div class="case-i"><h3>Мобильный сервис</h3><div class="case-res">iOS / Android · MVP <span class="ar">→</span></div></div>
       </article>
-      <!-- 04 SEO + Реклама -->
       <article class="case reveal" data-cursor>
+        <img class="cover" src="img/cover4.jpg" alt="SEO и реклама — мокап" loading="lazy">
         <div class="case-top"><span class="case-num">04</span><span class="case-cat">SEO + Реклама</span></div>
-        <div class="mock"><svg viewBox="0 0 360 250" xmlns="http://www.w3.org/2000/svg">
-          <rect width="360" height="250" rx="14" fill="#f5f4ef"/>
-          <rect width="360" height="28" rx="14" fill="#e9e6dd"/><rect y="14" width="360" height="14" fill="#e9e6dd"/>
-          <circle cx="18" cy="14" r="3.5" fill="#cfccc3"/><circle cx="30" cy="14" r="3.5" fill="#cfccc3"/>
-          <rect x="20" y="44" width="64" height="22" rx="5" fill="#16171d"/><rect x="20" y="74" width="44" height="7" rx="3" fill="#cfccc3"/>
-          <g>
-            <circle cx="30" cy="108" r="11" fill="#25c08a"/><text x="30" y="112" font-family="sans-serif" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">1</text>
-            <rect x="48" y="103" width="120" height="9" rx="4" fill="#16171d"/><rect x="48" y="117" width="80" height="6" rx="3" fill="#cfccc3"/>
-            <circle cx="30" cy="146" r="11" fill="#dedbd2"/><text x="30" y="150" font-family="sans-serif" font-size="11" fill="#16171d" text-anchor="middle" font-weight="700">2</text>
-            <rect x="48" y="141" width="100" height="9" rx="4" fill="#16171d"/><rect x="48" y="155" width="70" height="6" rx="3" fill="#cfccc3"/>
-            <circle cx="30" cy="184" r="11" fill="#dedbd2"/><text x="30" y="188" font-family="sans-serif" font-size="11" fill="#16171d" text-anchor="middle" font-weight="700">3</text>
-            <rect x="48" y="179" width="112" height="9" rx="4" fill="#16171d"/><rect x="48" y="193" width="60" height="6" rx="3" fill="#cfccc3"/>
-          </g>
-          <rect x="196" y="44" width="148" height="100" rx="10" fill="#fff" stroke="#e6e3da"/>
-          <path d="M208 128 L230 110 L252 118 L274 92 L296 100 L320 70" fill="none" stroke="#25c08a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M208 128 L230 110 L252 118 L274 92 L296 100 L320 70 L320 134 L208 134 Z" fill="#25c08a" opacity="0.12"/>
-          <circle cx="320" cy="70" r="4" fill="#25c08a"/>
-          <g fill="#16171d">
-            <rect x="206" y="176" width="20" height="52" rx="3"/><rect x="236" y="160" width="20" height="68" rx="3"/><rect x="266" y="186" width="20" height="42" rx="3"/><rect x="296" y="150" width="20" height="78" rx="3" fill="#25c08a"/><rect x="326" y="170" width="14" height="58" rx="3"/>
-          </g>
-        </svg></div>
         <div class="case-i"><h3>Сайт услуг</h3><div class="case-res">Продвижение в поиске и Яндекс Директ <span class="ar">→</span></div></div>
       </article>
-      <!-- 05 Лендинг -->
       <article class="case reveal" data-cursor>
+        <img class="cover" src="img/cover5.jpg" alt="Лендинг — мокап" loading="lazy">
         <div class="case-top"><span class="case-num">05</span><span class="case-cat">Лендинг</span></div>
-        <div class="mock"><svg viewBox="0 0 360 250" xmlns="http://www.w3.org/2000/svg">
-          <rect width="360" height="250" rx="14" fill="#f5f4ef"/>
-          <rect width="360" height="28" rx="14" fill="#e9e6dd"/><rect y="14" width="360" height="14" fill="#e9e6dd"/>
-          <circle cx="18" cy="14" r="3.5" fill="#cfccc3"/><circle cx="30" cy="14" r="3.5" fill="#cfccc3"/>
-          <rect x="100" y="52" width="160" height="16" rx="5" fill="#16171d"/><rect x="128" y="76" width="104" height="16" rx="5" fill="#16171d"/>
-          <rect x="120" y="104" width="120" height="7" rx="3" fill="#cfccc3"/><rect x="138" y="116" width="84" height="7" rx="3" fill="#cfccc3"/>
-          <rect x="135" y="136" width="90" height="26" rx="13" fill="#25c08a"/>
-          <g fill="#e0ddd4"><rect x="62" y="190" width="52" height="34" rx="7"/><rect x="126" y="190" width="52" height="34" rx="7"/><rect x="190" y="190" width="52" height="34" rx="7"/><rect x="254" y="190" width="52" height="34" rx="7"/></g>
-          <rect x="62" y="201" width="30" height="6" rx="3" fill="#cfccc3"/><rect x="190" y="201" width="30" height="6" rx="3" fill="#cfccc3"/>
-        </svg></div>
         <div class="case-i"><h3>Посадочная страница</h3><div class="case-res">Лендинг + настройка рекламы <span class="ar">→</span></div></div>
       </article>
     </div>
-    <p class="cases-note reveal">* Демо-мокапы для примера. Реальные проекты и цифры результатов добавляются на этапе наполнения.</p>
+    <p class="cases-note reveal">* Обложки-образцы. Здесь будут реальные работы и цифры результатов — добавляются на этапе наполнения.</p>
   </div>
 </section>
 
@@ -520,6 +450,10 @@ setTimeout(function(){if(!window.gsap)document.documentElement.classList.remove(
 </section>
 
 <!-- FAQ -->
+<div class="band"><div class="drift rev">
+  <span>Разгоняем бизнес<i class="dot"></i></span><span><b>в цифре</b><i class="dot"></i></span><span>Под ключ<i class="dot"></i></span><span>Разгоняем бизнес<i class="dot"></i></span><span><b>в цифре</b><i class="dot"></i></span><span>Под ключ<i class="dot"></i></span>
+</div></div>
+
 <section class="pad" id="faq">
   <div class="wrap">
     <div class="head reveal"><h2>Частые вопросы</h2><p>Коротко о том, как мы работаем.</p></div>
