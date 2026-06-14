@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru"><head><meta charset="UTF-8">
+<style>
+@import url('fonts/fonts.css');
+:root{--ink:#0b0b0f;--cream:#f7f5f0;--paper:#ffffff;--muted:#8a8782;--line:#e3ded5;}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--cream);font-family:'Manrope',sans-serif;color:var(--ink);padding:64px}
+.sheet{max-width:1180px;margin:0 auto}
+.cap{font-family:'Space Grotesk',sans-serif;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.hero{display:flex;align-items:center;gap:30px;padding:56px 56px;background:var(--paper);border:1px solid var(--line);border-radius:24px}
+.lockup{display:flex;align-items:center;gap:22px;color:var(--ink)}
+.word{font-family:'Manrope',sans-serif;font-weight:800;font-size:76px;letter-spacing:-.03em;line-height:.9}
+.tag{margin-left:auto;max-width:240px;text-align:right;color:var(--muted);font-size:15px;line-height:1.45;font-weight:500}
+.tag b{color:var(--ink);font-weight:700}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:22px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:240px;gap:22px}
+.card.dark{background:var(--ink)}
+.card.dark .cap{color:#7c7a86}
+.fav{width:104px;height:104px;border-radius:24px;background:var(--ink);display:flex;align-items:center;justify-content:center;color:var(--cream)}
+.wordsm{font-family:'Manrope',sans-serif;font-weight:800;font-size:40px;letter-spacing:-.03em;color:var(--cream)}
+.swatches{display:flex;gap:14px;margin-top:22px}
+.sw{flex:1;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;align-items:center;gap:14px;font-family:'Space Grotesk',sans-serif;font-size:13px;color:var(--muted)}
+.dot{width:38px;height:38px;border-radius:10px;border:1px solid var(--line)}
+</style></head>
+<body>
+<div class="sheet">
+
+  <div class="hero">
+    <div class="lockup">
+      <svg width="150" height="120" viewBox="0 0 200 160" fill="none" style="color:#0b0b0f">
+        <g stroke="currentColor" stroke-width="9" stroke-linecap="round" fill="none">
+          <line x1="50" y1="58" x2="86" y2="58"/>
+          <line x1="26" y1="72" x2="86" y2="72"/>
+          <line x1="10" y1="80" x2="86" y2="80"/>
+          <line x1="32" y1="88" x2="86" y2="88"/>
+          <line x1="54" y1="102" x2="86" y2="102"/>
+          <line x1="12" y1="72" x2="19" y2="72"/>
+          <line x1="16" y1="88" x2="25" y2="88"/>
+          <line x1="38" y1="102" x2="45" y2="102"/>
+        </g>
+        <circle cx="128" cy="80" r="52" stroke="currentColor" stroke-width="9" fill="none"/>
+        <circle cx="128" cy="80" r="39" fill="currentColor"/>
+      </svg>
+      <div class="word">РАЗГОН</div>
+    </div>
+    <div class="tag">Цифровое агентство полного цикла.<br><b>Разгоняем бизнес в цифре.</b></div>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <span class="cap">Знак</span>
+      <svg width="170" height="136" viewBox="0 0 200 160" fill="none" style="color:#0b0b0f">
+        <g stroke="currentColor" stroke-width="9" stroke-linecap="round" fill="none">
+          <line x1="50" y1="58" x2="86" y2="58"/><line x1="26" y1="72" x2="86" y2="72"/>
+          <line x1="10" y1="80" x2="86" y2="80"/><line x1="32" y1="88" x2="86" y2="88"/>
+          <line x1="54" y1="102" x2="86" y2="102"/>
+          <line x1="12" y1="72" x2="19" y2="72"/><line x1="16" y1="88" x2="25" y2="88"/><line x1="38" y1="102" x2="45" y2="102"/>
+        </g>
+        <circle cx="128" cy="80" r="52" stroke="currentColor" stroke-width="9" fill="none"/>
+        <circle cx="128" cy="80" r="39" fill="currentColor"/>
+      </svg>
+    </div>
+
+    <div class="card dark">
+      <svg width="128" height="102" viewBox="0 0 200 160" fill="none" style="color:#f7f5f0">
+        <g stroke="currentColor" stroke-width="9" stroke-linecap="round" fill="none">
+          <line x1="50" y1="58" x2="86" y2="58"/><line x1="26" y1="72" x2="86" y2="72"/>
+          <line x1="10" y1="80" x2="86" y2="80"/><line x1="32" y1="88" x2="86" y2="88"/>
+          <line x1="54" y1="102" x2="86" y2="102"/>
+          <line x1="12" y1="72" x2="19" y2="72"/><line x1="16" y1="88" x2="25" y2="88"/><line x1="38" y1="102" x2="45" y2="102"/>
+        </g>
+        <circle cx="128" cy="80" r="52" stroke="currentColor" stroke-width="9" fill="none"/>
+        <circle cx="128" cy="80" r="39" fill="currentColor"/>
+      </svg>
+      <div class="wordsm">РАЗГОН</div>
+      <span class="cap">Инверсия на тёмном</span>
+    </div>
+
+    <div class="card">
+      <span class="cap">Фавикон / аватар</span>
+      <div class="fav">
+        <svg width="74" height="59" viewBox="0 0 200 160" fill="none">
+          <g stroke="currentColor" stroke-width="10" stroke-linecap="round" fill="none">
+            <line x1="50" y1="58" x2="86" y2="58"/><line x1="26" y1="72" x2="86" y2="72"/>
+            <line x1="10" y1="80" x2="86" y2="80"/><line x1="32" y1="88" x2="86" y2="88"/>
+            <line x1="54" y1="102" x2="86" y2="102"/>
+          </g>
+          <circle cx="128" cy="80" r="52" stroke="currentColor" stroke-width="10" fill="none"/>
+          <circle cx="128" cy="80" r="39" fill="currentColor"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="swatches">
+    <div class="sw"><span class="dot" style="background:#0b0b0f"></span> Графит · #0B0B0F</div>
+    <div class="sw"><span class="dot" style="background:#f7f5f0"></span> Кремовый · #F7F5F0</div>
+    <div class="sw"><span class="dot" style="background:#ffffff"></span> Бумага · #FFFFFF</div>
+    <div class="sw"><span class="dot" style="background:#8a8782"></span> Серый текст · #8A8782</div>
+  </div>
+
+</div>
+</body></html>
